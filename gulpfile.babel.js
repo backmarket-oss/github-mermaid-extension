@@ -139,7 +139,18 @@ function buildJS(target) {
       entries: 'src/scripts/' + file,
       debug: true
     })
-    .transform('babelify', { presets: ['es2015'] })
+    .transform('babelify', {
+      presets: [
+        [
+          '@babel/env', {
+            targets: {
+              browsers: ['last 2 versions', 'safari >= 7']
+            },
+            useBuiltIns: false
+          }
+        ]
+      ]
+    })
     .transform(preprocessify, {
       includeExtensions: ['.js'],
       context: context
@@ -149,7 +160,7 @@ function buildJS(target) {
     .pipe(buffer())
     .pipe(gulpif(!production, $.sourcemaps.init({ loadMaps: true }) ))
     .pipe(gulpif(!production, $.sourcemaps.write('./') ))
-    .pipe(gulpif(production, $.uglify({ 
+    .pipe(gulpif(production, $.uglifyEs.default({ 
       "mangle": false,
       "output": {
         "ascii_only": true
