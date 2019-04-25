@@ -13,6 +13,10 @@
       <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Github Markdown</a>.
     </strong>
   </p>
+</div>
+
+<div align="center">
+  <img src="./resources/chrome-promo/marquee.png" alt="Extension Boilerplate"/>
 
   <nav align="center">
     <a href="#features">Features</a> •
@@ -23,11 +27,7 @@
     <a href="#contributing">Contributing</a>
   </nav>
 </div>
-
 <br>
-<div align="center">
-  <img src="./resources/chrome-promo/marquee.png" alt="Extension Boilerplate"/>
-</div>
 
 ## Install
 
