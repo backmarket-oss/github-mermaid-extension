@@ -30,7 +30,7 @@ var manifest = {
   firefox: {
     "applications": {
       "gecko": {
-        "id": "my-app-id@mozilla.org"
+        "id": "github-mermaid-extension@amercier.com"
       }
     }
   }
