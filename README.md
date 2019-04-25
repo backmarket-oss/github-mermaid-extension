@@ -19,8 +19,8 @@
   <img src="./resources/chrome-promo/marquee.png" alt="Extension Boilerplate"/>
 
   <nav align="center">
-    <a href="#features">Features</a> •
     <a href="#install">Install</a> •
+    <a href="#features">Features</a> •
     <a href="#how-to-use">How to use</a> •
     <a href="#roadmap">Roadmap</a> •
     <a href="#license">License</a> •
@@ -32,7 +32,7 @@
 ## Install
 
 - **Google Chrome**: [GitHub + Mermaid - Chrome Web Store](https://chrome.google.com/webstore/detail/github-%20-mermaid/goiiopgdnkogdbjmncgedmgpoajilohe)
-- **Firefox**: coming soon
+- **Firefox**: [GitHub + Mermaid - Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/github-mermaid/)
 - **Opera**: coming later
 
 ## Features
@@ -128,7 +128,7 @@ information about the Mermaid syntax.
 - [x] Initial implementation
 - [x] Publish Chrome extension
 - [x] Documentation
-- [ ] Publish Firefox extension
+- [x] Publish Firefox extension
 - [ ] Publish Opera extension
 - [ ] Continuous Integration
 - [ ] Upgrade dependencies
