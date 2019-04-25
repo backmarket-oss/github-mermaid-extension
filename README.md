@@ -1,122 +1,145 @@
 <div align="center">
   <h1>
-    Extension Boilerplate  
+    Github + Mermaid  
   </h1>
 
   <p>
-    <strong>A foundation for creating browser extensions for Chrome, Opera & Firefox.</strong>
+    <strong>
+      A browser extension for Chrome, Opera & Firefox that adds
+      <img src="https://mermaidjs.github.io/gitbook/images/favicon.ico" width="16" height="16"/>
+      <a href="https://mermaidjs.github.io" target="_blank">Mermaid</a>
+      language support to
+      <img src="https://github.githubassets.com/favicon.ico" width="16" height="16"/>
+      <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Github Markdown</a>.
+    </strong>
   </p>
+
+  <nav align="center">
+    <a href="#features">Features</a> •
+    <a href="#install">Install</a> •
+    <a href="#how-to-use">How to use</a> •
+    <a href="#roadmap">Roadmap</a> •
+    <a href="#license">License</a> •
+    <a href="#contributing">Contributing</a>
+  </nav>
 </div>
 
-Now that Firefox supports WebExtensions, it has become a lot easier to build browser extensions/addons for multiple browsers without duplicating the codebase. This project serves as a sensible starting point to help you get started.
-
+<br>
 <div align="center">
-  <a href="https://www.emailthis.me/open-source/extension-boilerplate">
-    <img src="./resources/chrome-promo/large.png" alt="Extension Boilerplate">
-  </a>
+  <img src="./resources/chrome-promo/marquee.png" alt="Extension Boilerplate"/>
 </div>
 
-I have extracted this from the browser extensions that I built for my side-project, [Email This](https://www.emailthis.me).
+## Install
 
-> Side note: Do check out [**Email This**](https://www.emailthis.me). It is a simpler alternative to bookmarking tools like Pocket, Readability & Instapaper. Email This will remove ads & distractions from an article and send you a nice email with just the text/images. No need to install any additional applications or login to another app just to access your bookmarks. 
-The Chrome Extensions is available [on the Chrome Web Store](https://chrome.google.com/webstore/detail/email-this/lgblkllcjgihfnlefhnnpppndbbjallh).
-
+- **Google Chrome**: [GitHub + Mermaid - Chrome Web Store](https://chrome.google.com/webstore/detail/github-%20-mermaid/goiiopgdnkogdbjmncgedmgpoajilohe)
+- **Firefox**: coming soon
+- **Opera**: coming later
 
 ## Features
 
-<dl>
-  <dt>Write once and deploy to Chrome, Opera & Firefox</dt>
-  <dd>
-    Based on WebExtensions. It also includes a tiny polyfill to bring uniformity to the APIs exposed by different browsers.
-  </dd>
-</dl>
+### Supported GitHub features
 
-<dl>
-  <dt>Live-reload</dt>
-  <dd>
-    Your changes to CSS, HTML & JS files will be relayed instantly without having to manually reload the extension. This ends up saving a lot of time and improving the developer experience.
-  </dd>
-</dl>
+- [x] Pull requests & issues description (preview + published) - [Demo](https://github.com/BackMarket/github-mermaid-extension/issues/1)
+- [x] Pull requests & issues comment (preview + published)
+- [x] Markdown (`.md`) files (diff + published)
 
-<dl>
-  <dt>Sensible starting point</dt>
-  <dd>
-    This comes with a gulp based workflow that converts modern <strong>ES6</strong> JavaScript and <strong>SCSS</strong> to JS/CSS. 
-    Scripts are transpiled using Babel and bundled using Browserify.
-    Sourcemaps are available for both JS and SCSS.
-  </dd>
-</dl>
+### Diagram types
 
-<dl>
-  <dt>Sketch (.sketch) assets for icons and promo images</dt>
-  <dd>
-    A .sketch file is included in the resources directory. This has all the icons and promo images that will be needed while uploading the extensions to the app stores.
-  </dd>
-</dl>
+#### Flowcharts
 
-<dl>
-  <dt>Easily configurable and extendable</dt>
-  <dd>
-    The gulpfile is easily understandable and configurable. If you want to add additional tasks or remove un-used ones, you can easily tweak that file to suit your needs.
-  </dd>
-</dl>
+![Flowchart example](/resources/screenshots/flowchart.png)
 
-<dl>
-  <dt>Platform specific & Environment specific variables.</dt>
-  <dd>
-    You might need to specify different data variables based on your environment. For example, you might want to use a localhost API endpoint during development and a production API endpoint once the extension is submitted to the appstore. You can specify such data in the json files inside `config` directory.
+<details>
+  <summary>Show source code</summary>
 
-    You can also set custom data variables based on the platform (different variable for Chrome, FF, Opera).
-  </dd>
-</dl>
+  ```
+  ```mermaid
+  graph LR
 
+  A(Start)
 
+  A --> B[Look for an item]
 
-## Installation
-1. Clone the repository `git clone https://github.com/EmailThis/extension-boilerplate.git`
-2. Run `npm install`
-3. Run `npm run build`
+  B --> C{Did you find it?}
+  C -->|Yes| D(Stop looking)
+  C -->|No| E{Do you need it?}
+  E -->|Yes| B
+  E -->|No| D
+  ```
+</details>
 
-Alternately, if you want to try out the sample extension, here are the download links. After you download it, unzip the file and load it in your browser using the steps mentioned below.
- - [**Download Chrome Extension**](https://github.com/EmailThis/extension-boilerplate/releases/download/v1.0/chrome.zip)
- - [**Download Opera Extension**](https://github.com/EmailThis/extension-boilerplate/releases/download/v1.0/opera.zip)
- - [**Download Firefox Extension**](https://github.com/EmailThis/extension-boilerplate/releases/download/v1.0/firefox.zip)
+#### Sequence Diagrams
 
+![Sequence Diagram example](/resources/screenshots/sequence-diagram.png)
 
-##### Load the extension in Chrome & Opera
-1. Open Chrome/Opera browser and navigate to chrome://extensions
-2. Select "Developer Mode" and then click "Load unpacked extension..."
-3. From the file browser, choose to `extension-boilerplate/build/chrome` or (`extension-boilerplate/build/opera`)
+<details>
+  <summary>Show source code</summary>
 
+  ```
+  ```mermaid
+  sequenceDiagram
+  participant U as User
+  participant C as Client
+  participant S as Server
+  participant DB as Database
 
-##### Load the extension in Firefox
-1. Open Firefox browser and navigate to about:debugging
-2. Click "Load Temporary Add-on" and from the file browser, choose `extension-boilerplate/build/firefox`
+  U ->> C: Fill username
+  U ->> C: Fill password
+  C ->> U: Enable "Login" button
+  U ->> C: Click "Login" button
+  C ->>+ S: POST /login
+  S ->>+ DB: SELECT FROM users
+  Note over S,DB: See login.py for impl. details
+  DB -->>- S: results
+  S -->>- C: { authenticated: true }
+  C ->> U: redirect /home
+  ```
+</details>
 
+#### Gantt Diagrams
 
-## Developing
-The following tasks can be used when you want to start developing the extension and want to enable live reload - 
+![Gantt Diagram example](/resources/screenshots/gantt-diagram.png)
 
-- `npm run chrome-watch`
-- `npm run opera-watch`
-- `npm run firefox-watch`
+<details>
+  <summary>Show source code</summary>
 
+  ```
+  ```mermaid
+  gantt
+      title A Gantt Diagram
+      dateFormat  YYYY-MM-DD
+      section Section
+      A task           :a1, 2014-01-01, 30d
+      Another task     :after a1  , 20d
+      section Another
+      Task in sec      :2014-01-12  , 12d
+      another task      : 24d
+  ```
+</details>
 
-## Packaging
-Run `npm run dist` to create a zipped, production-ready extension for each browser. You can then upload that to the appstore.
+## How to use
 
+Simply put Mermaid code into <code>```mermaid</code>. See
+[Mermaid official website](https://mermaidjs.github.io/gantt.html) for more
+information about the Mermaid syntax.
 
-## TODO
-- [ ] Add support for Safari
-- [x] Add Firefox & Opera Promo images
-- [x] Add sample screenshot templates
-- [ ] Write a guide for using config variables & JS preprocessor
+## Roadmap
 
+- [x] Initial implementation
+- [x] Publish Chrome extension
+- [x] Documentation
+- [x] Publish Firefox extension
+- [ ] Publish Opera extension
+- [ ] Continuous Integration
+- [ ] Upgrade dependencies
+- [ ] Dark theme + option page
 
------------
-This project is licensed under the MIT license. 
+## License
 
-If you have any questions or comments, please create a new issue. I'd be happy to hear your thoughts.
+[![License](https://img.shields.io/github/license/BackMarket/github-mermaid-extension.svg)](/LICENSE.md)
 
+## Contributing
 
-Bharani, [Email This](https://www.emailthis.me)
+Contributions (issues ♥, pull requests ♥♥♥) are more than welcome! Feel free to clone, fork, modify, extend, etc.
+
+See [contributing intructions](/CONTRIBUTING.md) for details.
