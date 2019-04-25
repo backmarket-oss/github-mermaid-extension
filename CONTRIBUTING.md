@@ -5,8 +5,8 @@
 ## Installation
 
 1. Clone the repository `git clone https://github.com/BackMarket/github-mermaid-extension.git`
-2. Run `npm install`
-3. Run `npm run build`
+2. Run `yarn`
+3. Run `yarn build`
 
 ### Load the extension in Chrome & Opera
 
@@ -23,10 +23,10 @@
 
 The following tasks can be used when you want to start developing the extension and want to enable live reload - 
 
-- `npm run chrome-watch`
-- `npm run opera-watch`
-- `npm run firefox-watch`
+- `yarn chrome-watch`
+- `yarn opera-watch`
+- `yarn firefox-watch`
 
 ## Packaging
 
-Run `npm run dist` to create a zipped, production-ready extension for each browser. You can then upload that to the appstore.
+Run `yarn dist` to create a zipped, production-ready extension for each browser. You can then upload that to the appstore.
