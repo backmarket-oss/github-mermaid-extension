@@ -128,7 +128,7 @@ information about the Mermaid syntax.
 - [x] Initial implementation
 - [x] Publish Chrome extension
 - [x] Documentation
-- [x] Publish Firefox extension
+- [ ] Publish Firefox extension
 - [ ] Publish Opera extension
 - [ ] Continuous Integration
 - [ ] Upgrade dependencies
