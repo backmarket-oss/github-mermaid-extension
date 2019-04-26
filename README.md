@@ -18,14 +18,14 @@
 <div align="center">
   <img src="./resources/chrome-promo/marquee.png" alt="Extension Boilerplate"/>
 
-  <nav align="center">
+  <p align="center">
     <a href="#install">Install</a> •
     <a href="#features">Features</a> •
     <a href="#how-to-use">How to use</a> •
     <a href="#roadmap">Roadmap</a> •
     <a href="#license">License</a> •
     <a href="#contributing">Contributing</a>
-  </nav>
+  </p>
 
   <p class="center">
     <a href="https://travis-ci.com/BackMarket/github-mermaid-extension" target="_blank">
