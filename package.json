@@ -1,7 +1,5 @@
 {
-  "name": "extension-boilerplate",
-  "version": "0.0.2",
-  "description": "A template for creating cross-browser extensions",
+  "private": true,
   "scripts": {
     "test": "echo 'Warning: test not implemented' >&2",
     "chrome-build": "cross-env TARGET=chrome gulp",
@@ -16,15 +14,10 @@
     "firefox-dist": "cross-env NODE_ENV=production cross-env TARGET=firefox gulp dist",
     "dist": "npm run chrome-dist && npm run opera-dist && npm run firefox-dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EmailThis/extension-boilerplate"
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "mermaid": "^8.0.0"
   },
-  "author": "Bharani <bharani91@gmail.com> (https://github.com/bharani91)",
-  "bugs": {
-    "url": "https://github.com/EmailThis/extension-boilerplate/issues"
-  },
-  "homepage": "https://www.emailthis.me/extension-boilerplate",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
@@ -46,9 +39,5 @@
     "preprocessify": "^1.0.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "mermaid": "^8.0.0"
   }
 }
