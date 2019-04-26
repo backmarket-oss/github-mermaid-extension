@@ -1,141 +1,86 @@
-import fs from "fs";
+import del from 'del';
+import fs from 'fs';
 import gulp from 'gulp';
+import gulpIf from 'gulp-if'
+import livereload from 'gulp-livereload'
+import mergeJson from 'gulp-merge-json'
+import plumber from 'gulp-plumber'
+import sass from 'gulp-sass'
+import zip from 'gulp-zip'
 import { merge } from 'event-stream'
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import preprocessify from 'preprocessify';
 
-const $ = require('gulp-load-plugins')();
+const production = process.env.NODE_ENV === 'production';
+const target = process.env.TARGET || 'chrome';
+const environment = process.env.NODE_ENV || 'development';
 
-var production = process.env.NODE_ENV === "production";
-var target = process.env.TARGET || "chrome";
-var environment = process.env.NODE_ENV || "development";
+const generic = JSON.parse(fs.readFileSync(`./config/${environment}.json`));
+const specific = JSON.parse(fs.readFileSync(`./config/${target}.json`));
+const context = Object.assign({}, generic, specific);
 
-var generic = JSON.parse(fs.readFileSync(`./config/${environment}.json`));
-var specific = JSON.parse(fs.readFileSync(`./config/${target}.json`));
-var context = Object.assign({}, generic, specific);
-
-var manifest = {
+const manifest = {
   dev: {
-    "background": {
-      "scripts": [
-        "scripts/livereload.js",
-        "scripts/background.js"
+    background: {
+      scripts: [
+        'scripts/livereload.js',
+        'scripts/background.js'
       ]
     }
   },
 
   firefox: {
-    "applications": {
-      "gecko": {
-        "id": "github-mermaid-extension@amercier.com"
+    applications: {
+      gecko: {
+        id: 'github-mermaid-extension@amercier.com'
       }
     }
   }
 }
 
-// Tasks
-gulp.task('clean', () => {
-  return pipe(`./build/${target}`, $.clean())
-})
+gulp.task('clean:build', () => del(`./build/${target}`))
+gulp.task('clean:dist', () => del(`./dist/${target}.zip`))
 
-gulp.task('build', (cb) => {
-  $.runSequence('clean', 'styles', 'ext', cb)
-});
-
-gulp.task('watch', ['build'], () => {
-  $.livereload.listen();
-
-  gulp.watch(['./src/**/*']).on("change", () => {
-    $.runSequence('build', $.livereload.reload);
-  });
-});
-
-gulp.task('default', ['build']);
-
-gulp.task('ext', ['manifest', 'js'], () => {
-  return mergeAll(target)
-});
-
-
-// -----------------
-// COMMON
-// -----------------
-gulp.task('js', () => {
-  return buildJS(target)
-})
-
-gulp.task('styles', () => {
-  return gulp.src('src/styles/**/*.scss')
-    .pipe($.plumber())
-    .pipe($.sass.sync({
+gulp.task('styles', () =>
+  gulp.src('src/styles/**/*.scss')
+    .pipe(plumber())
+    .pipe(sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.']
-    }).on('error', $.sass.logError))
-    .pipe(gulp.dest(`build/${target}/styles`));
-});
+    }).on('error', sass.logError))
+    .pipe(gulp.dest(`build/${target}/styles`))
+);
 
-gulp.task("manifest", () => {
-  return gulp.src('./manifest.json')
-    .pipe($.if(!production, $.mergeJson({
-      fileName: "manifest.json",
-      jsonSpace: " ".repeat(4),
+gulp.task('manifest', () =>
+  gulp.src('./manifest.json')
+    .pipe(gulpIf(!production, mergeJson({
+      fileName: 'manifest.json',
+      jsonSpace: ' '.repeat(4),
       endObj: manifest.dev
     })))
-    .pipe($.if(target === "firefox", $.mergeJson({
-      fileName: "manifest.json",
-      jsonSpace: " ".repeat(4),
+    .pipe(gulpIf(target === 'firefox', mergeJson({
+      fileName: 'manifest.json',
+      jsonSpace: ' '.repeat(4),
       endObj: manifest.firefox
     })))
     .pipe(gulp.dest(`./build/${target}`))
-});
+);
 
+const scripts = [
+  'background.js',
+  'contentscript.js',
+  'options.js',
+  'popup.js',
+  'livereload.js'
+]
 
-
-// -----------------
-// DIST
-// -----------------
-gulp.task('dist', (cb) => {
-  $.runSequence('build', 'zip', cb)
-});
-
-gulp.task('zip', () => {
-  return pipe(`./build/${target}/**/*`, $.zip(`${target}.zip`), './dist')
-})
-
-
-// Helpers
-function pipe(src, ...transforms) {
-  return transforms.reduce((stream, transform) => {
-    const isDest = typeof transform === 'string'
-    return stream.pipe(isDest ? gulp.dest(transform) : transform)
-  }, gulp.src(src))
-}
-
-function mergeAll(dest) {
-  return merge(
-    pipe('./src/icons/**/*', `./build/${dest}/icons`),
-    pipe(['./src/_locales/**/*'], `./build/${dest}/_locales`),
-    pipe([`./src/images/${target}/**/*`], `./build/${dest}/images`),
-    pipe(['./src/images/shared/**/*'], `./build/${dest}/images`),
-    pipe(['./src/**/*.html'], `./build/${dest}`)
-  )
-}
-
-function buildJS(target) {
-  const files = [
-    'background.js',
-    'contentscript.js',
-    'options.js',
-    'popup.js',
-    'livereload.js'
-  ]
-
-  let tasks = files.map( file => {
-    return browserify({
-      entries: 'src/scripts/' + file,
+scripts.forEach(script => {
+  gulp.task(`scripts:${script}`, () =>
+    browserify({
+      entries: 'src/scripts/' + script,
       debug: !production,
     })
     .transform('babelify', {
@@ -155,10 +100,65 @@ function buildJS(target) {
       context: context
     })
     .bundle()
-    .pipe(source(file))
+    .pipe(source(script))
     .pipe(buffer())
-    .pipe(gulp.dest(`build/${target}/scripts`));
-  });
+    .pipe(gulp.dest(`build/${target}/scripts`))
+  )
+})
 
-  return merge.apply(null, tasks);
-}
+gulp.task('scripts', gulp.parallel(
+  ...scripts.map(script => `scripts:${script}`)
+))
+
+const resources = [
+  ['icons', './src/icons/**/*', `./build/${target}/icons`],
+  ['locales', './src/_locales/**/*', `./build/${target}/_locales`],
+  ['images', `./src/images/${target}/**/*`, `./build/${target}/images`],
+  ['shared-images', './src/images/shared/**/*', `./build/${target}/images`],
+  ['html', './src/**/*.html', `./build/${target}`],
+]
+
+resources.forEach(([name, src, dest]) => {
+  gulp.task(
+    `resources:${name}`,
+    () => gulp.src(src).pipe(gulp.dest(dest))
+  )
+})
+
+gulp.task('resources', gulp.parallel(
+  ...resources.map(([name]) => `resources:${name}`))
+)
+
+gulp.task('extension', gulp.parallel(
+  'manifest',
+  'scripts',
+  'styles',
+  'resources'
+))
+
+gulp.task('build', gulp.series('clean:build', 'extension'))
+
+gulp.task('livereload', () => {
+  livereload.listen();
+  gulp.watch('./src/**/*', gulp.series('build'))
+})
+
+gulp.task('watch', gulp.series(
+  'build',
+  'livereload',
+));
+
+gulp.task('zip', () =>
+  gulp
+  .src(`./build/${target}/**/*`)
+  .pipe(zip(`${target}.zip`))
+  .pipe(gulp.dest('dist'))
+)
+
+gulp.task('dist', gulp.series(
+  'build',
+  'clean:dist',
+  'zip'
+));
+
+gulp.task('default', gulp.series('build'))
