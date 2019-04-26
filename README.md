@@ -142,8 +142,8 @@ information about the Mermaid syntax.
 - [x] Documentation
 - [x] Publish Firefox extension
 - [x] Continuous Integration
+- [x] Upgrade dependencies
 - [ ] Testing
-- [ ] Upgrade dependencies
 - [ ] Automatic dependency management
 - [ ] Dark theme + option page
 - [ ] Publish Opera extension
