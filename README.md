@@ -149,7 +149,7 @@ information about the Mermaid syntax.
 - [x] Continuous Integration
 - [x] Upgrade dependencies
 - [x] Automatic dependency management
-- [ ] Fix #3
+- [x] Fix #3
 - [ ] Testing
 - [ ] Dark theme + option page
 - [ ] Cleanup
