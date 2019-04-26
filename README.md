@@ -151,7 +151,7 @@ information about the Mermaid syntax.
 
 ## License
 
-[![License](https://img.shields.io/github/license/BackMarket/github-mermaid-extension.svg)](/LICENSE.md)
+[![License](https://img.shields.io/github/license/BackMarket/github-mermaid-extension.svg)](/LICENSE.md) [![Greenkeeper badge](https://badges.greenkeeper.io/BackMarket/github-mermaid-extension.svg)](https://greenkeeper.io/)
 
 ## Contributing
 
