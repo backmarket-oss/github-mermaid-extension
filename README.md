@@ -37,6 +37,9 @@
     <a href="https://david-dm.org/BackMarket/github-mermaid-extension#info=devDependencies">
       <img src="https://img.shields.io/david/dev/BackMarket/github-mermaid-extension.svg"/>
     </a>
+    <a href="https://greenkeeper.io/">
+      <img src="https://badges.greenkeeper.io/BackMarket/github-mermaid-extension.svg"/>
+    </a>
   </p>
 </div>
 <br>
@@ -151,7 +154,7 @@ information about the Mermaid syntax.
 
 ## License
 
-[![License](https://img.shields.io/github/license/BackMarket/github-mermaid-extension.svg)](/LICENSE.md) [![Greenkeeper badge](https://badges.greenkeeper.io/BackMarket/github-mermaid-extension.svg)](https://greenkeeper.io/)
+[![License](https://img.shields.io/github/license/BackMarket/github-mermaid-extension.svg)](/LICENSE.md)
 
 ## Contributing
 
