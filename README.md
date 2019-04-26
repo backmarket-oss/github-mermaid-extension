@@ -31,6 +31,12 @@
     <a href="https://travis-ci.com/BackMarket/github-mermaid-extension" target="_blank">
       <img src="https://travis-ci.com/BackMarket/github-mermaid-extension.svg?branch=master"/>
     </a>
+    <a href="https://david-dm.org/BackMarket/github-mermaid-extension">
+      <img src="https://img.shields.io/david/BackMarket/github-mermaid-extension.svg"/>
+    </a>
+    <a href="https://david-dm.org/BackMarket/github-mermaid-extension#info=devDependencies">
+      <img src="https://img.shields.io/david/dev/BackMarket/github-mermaid-extension.svg"/>
+    </a>
   </p>
 </div>
 <br>
