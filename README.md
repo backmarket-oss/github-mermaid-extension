@@ -26,6 +26,12 @@
     <a href="#license">License</a> •
     <a href="#contributing">Contributing</a>
   </nav>
+
+  <p class="center">
+    <a href="https://travis-ci.com/BackMarket/github-mermaid-extension" target="_blank">
+      <img src="https://travis-ci.com/BackMarket/github-mermaid-extension.svg?branch=master"/>
+    </a>
+  </p>
 </div>
 <br>
 

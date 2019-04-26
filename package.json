@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "A template for creating cross-browser extensions",
   "scripts": {
+    "test": "echo 'Warning: test not implemented' >&2",
     "chrome-build": "cross-env TARGET=chrome gulp",
     "opera-build": "cross-env TARGET=opera gulp",
     "firefox-build": "cross-env TARGET=firefox gulp",
