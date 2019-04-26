@@ -54,6 +54,7 @@
 - [x] Pull requests & issues description (preview + published) - [Demo](https://github.com/BackMarket/github-mermaid-extension/issues/1)
 - [x] Pull requests & issues comment (preview + published)
 - [x] Markdown (`.md`) files (diff + published)
+- [x] Gists - [Demo](https://gist.github.com/amercier/df2e07a994315d323e398120bdda3989)
 
 ### Diagram types
 
