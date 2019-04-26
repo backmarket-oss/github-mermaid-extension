@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+import '@babel/polyfill'
 import ext from "./utils/ext"
 import mermaidAPI from 'mermaid'
 
