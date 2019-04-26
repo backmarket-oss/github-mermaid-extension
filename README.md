@@ -135,10 +135,12 @@ information about the Mermaid syntax.
 - [x] Publish Chrome extension
 - [x] Documentation
 - [x] Publish Firefox extension
-- [ ] Publish Opera extension
-- [ ] Continuous Integration
+- [x] Continuous Integration
+- [ ] Testing
 - [ ] Upgrade dependencies
+- [ ] Automatic dependency management
 - [ ] Dark theme + option page
+- [ ] Publish Opera extension
 
 ## License
 
