@@ -108,13 +108,21 @@ function processElement(source, id) {
 }
 
 /**
- * Process all `pre[lang="mermaid"]` elements that don't have
+ * Process all `pre[lang="mermaid"]` or `pre[class="hljs"]` elements that don't have
  * `[data-processed="true"]`.
  * @param {Iterator<string>} idIterator Id iterator
  */
 function processUnprocessedElements(idIterator) {
   const selector = 'pre[lang="mermaid"]:not([data-processed])';
   [...document.querySelectorAll(selector)].forEach(source => {
+    source.setAttribute('data-processed', 'true')
+    const target = processElement(source, idIterator.next().value)
+  })
+
+  // Azure DevOps Wikis don't provide the language for mermaid, but do provide language
+  // for other known languages such as cpp. We can select code blocks without a language defined
+  const selectorAzure = 'pre[class="hljs"]>code:not([class]):not([data-processed])';
+  [...document.querySelectorAll(selectorAzure)].forEach(source => {
     source.setAttribute('data-processed', 'true')
     const target = processElement(source, idIterator.next().value)
   })
