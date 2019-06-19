@@ -2,7 +2,7 @@
   "name": "GitHub + Mermaid",
   "version": "0.1.1",
   "manifest_version": 2,
-  "description": "A browser extension for Chrome, Opera & Firefox that adds Mermaid language support to GitHub.",
+  "description": "A browser extension for Chrome, Opera & Firefox that adds Mermaid language support to GitHub and Azure DevOps.",
   "icons": {
     "16": "icons/icon-16.png",
     "128": "icons/icon-128.png"
@@ -15,7 +15,8 @@
   },
   "permissions": [
     "https://github.com/*",
-    "https://*.github.com/*"
+    "https://*.github.com/*",
+    "https://dev.azure.com/*"
   ],
   "options_ui": {
     "page": "options.html"
@@ -24,7 +25,8 @@
     {
       "matches": [
         "https://github.com/*",
-        "https://*.github.com/*"
+        "https://*.github.com/*",
+        "https://dev.azure.com/*"
       ],
       "js": [
         "scripts/contentscript.js"

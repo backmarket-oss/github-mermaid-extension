@@ -10,7 +10,8 @@
       <a href="https://mermaidjs.github.io" target="_blank">Mermaid</a>
       language support to
       <img src="https://github.githubassets.com/favicon.ico" width="16" height="16"/>
-      <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Github Markdown</a>.
+      <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Github Markdown</a>
+      and also <a href="https://docs.microsoft.com/en-us/azure/devops/project/wiki/markdown-guidance?view=azure-devops" target="_blank">Azure DevOps</a>.
     </strong>
   </p>
 </div>
@@ -58,6 +59,10 @@
 - [x] Pull requests & issues comment (preview + published)
 - [x] Markdown (`.md`) files (diff + published)
 - [x] Gists - [Demo](https://gist.github.com/amercier/df2e07a994315d323e398120bdda3989)
+
+### Supported Azure DevOps features
+
+- [x] Wikis with code blocks
 
 ### Diagram types
 
