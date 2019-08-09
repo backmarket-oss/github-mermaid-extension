@@ -24,7 +24,7 @@
     "@babel/register": "^7.4.0",
     "babel-core": "^7.0.0-bridge.0",
     "babelify": "^10.0.0",
-    "browserify": "^16.2.3",
+    "browserify": "^16.5.0",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
     "del": "^4.1.0",
