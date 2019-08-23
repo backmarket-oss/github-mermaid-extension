@@ -27,7 +27,7 @@
     "browserify": "^16.2.3",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
-    "del": "^4.1.0",
+    "del": "^5.1.0",
     "event-stream": "^4.0.1",
     "gulp": "^4.0.1",
     "gulp-if": "^2.0.2",
