@@ -15,7 +15,8 @@
   },
   "permissions": [
     "https://github.com/*",
-    "https://*.github.com/*"
+    "https://*.github.com/*",
+    "https://github.*.com/*"
   ],
   "options_ui": {
     "page": "options.html"
@@ -24,7 +25,8 @@
     {
       "matches": [
         "https://github.com/*",
-        "https://*.github.com/*"
+        "https://*.github.com/*",
+        "https://github.*.com/*"
       ],
       "js": [
         "scripts/contentscript.js"
