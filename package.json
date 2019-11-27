@@ -25,7 +25,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
-    "core-js": "^3.0.1",
+    "core-js": "^3.4.5",
     "cross-env": "^5.2.0",
     "del": "^4.1.0",
     "event-stream": "^4.0.1",
