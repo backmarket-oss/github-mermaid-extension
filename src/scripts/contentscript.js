@@ -57,9 +57,8 @@ function *idGenerator() {
  * @param {string} id A unique element id.
  */
 function render(code, target, id) {
-  mermaidAPI.render(id, code, (svgCode, bindFunctions) => {
+  mermaidAPI.render(id, code, (svgCode) => {
     target.innerHTML = svgCode
-    bindFunctions(target)
   }, target)
 }
 
