@@ -15,7 +15,7 @@
     "dist": "npm run chrome-dist && npm run opera-dist && npm run firefox-dist"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.3",
+    "@babel/polyfill": "^7.8.3",
     "mermaid": "^8.0.0"
   },
   "devDependencies": {
