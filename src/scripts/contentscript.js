@@ -57,9 +57,8 @@ function *idGenerator() {
  * @param {string} id A unique element id.
  */
 function render(code, target, id) {
-  mermaidAPI.render(id, code, (svgCode, bindFunctions) => {
+  mermaidAPI.render(id, code, (svgCode) => {
     target.innerHTML = svgCode
-    bindFunctions(target)
   }, target)
 }
 
@@ -79,7 +78,7 @@ function renderError(message, target) {
 /**
  * Generate a Mermaid diagram into a new <div>
  * @param {HTMLPreElement} source Element containing the diagram source code, in Mermaid language.
- * @param {string} id A unique element id. 
+ * @param {string} id A unique element id.
  * @returns {HTMLDivElement} The new <div> element.
  */
 function processElement(source, id) {
@@ -99,7 +98,7 @@ function processElement(source, id) {
       source.style.display = 'none'
     }
 
-    render(code, target, id)    
+    render(code, target, id)
   } catch (error) {
     renderError(error.message, target)
     throw error

@@ -1,7 +1,7 @@
 {
-  "name": "GitHub + Mermaid",
-  "version": "0.1.1",
-  "manifest_version": 2,
+  "name": "NS8 GitHub + Mermaid",
+  "version": "0.1.2",
+  "manifest_version": 3,
   "description": "A browser extension for Chrome, Opera & Firefox that adds Mermaid language support to GitHub.",
   "icons": {
     "16": "icons/icon-16.png",
@@ -38,9 +38,7 @@
       "19": "icons/icon-19.png",
       "38": "icons/icon-38.png"
     },
-    "default_title": "GitHub + Mermaid",
+    "default_title": "NS8 GitHub + Mermaid",
     "default_popup": "popup.html"
   }
 }
-
-
