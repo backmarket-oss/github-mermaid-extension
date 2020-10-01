@@ -90,10 +90,13 @@ scripts.forEach(script => {
             targets: {
               browsers: ['last 2 versions', 'safari >= 7']
             },
-            useBuiltIns: false
+            useBuiltIns: false,
           }
         ]
-      ]
+      ],
+      sourceMaps: true, 
+      global: true, 
+      ignore: [/\/node_modules\/(?!entity-decode\/)/]
     })
     .transform(preprocessify, {
       includeExtensions: ['.js'],
