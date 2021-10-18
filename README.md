@@ -162,4 +162,4 @@ information about the Mermaid syntax.
 
 Contributions (issues ♥, pull requests ♥♥♥) are more than welcome! Feel free to clone, fork, modify, extend, etc.
 
-See [contributing intructions](/CONTRIBUTING.md) for details.
+See [contributing instructions](/CONTRIBUTING.md) for details.
